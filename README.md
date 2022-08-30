@@ -8,6 +8,7 @@ Un repo donde hay un Pony orm galopando por acá o por alla.
 3. Un buen equipo de desarrollo es previsible. Si digo "Voy a hacer A", entonces A se hace. Si se va a ir todo al caño, avisen con tiempo, es bueno saberlo para manejar las expectativas.
 4. Participen en comunidades. Mirense videos de charlas en eventos. Cuando se acabe la pandemia, busquen ampliar sus circulos sociales.
 5. Lean libros.
+6. Escriban "código bonito" siempre, en todo contexto.
 
 
 ## Generemos un diagrama de clases del ejercicio "Reservas de habitaciones" del práctico 2:
@@ -22,6 +23,9 @@ que se cobrará en general automáticamente de la tarjeta de crédito del client
 El cliente tiene sin embargo la opción de otras formas de pago al finalizar la reserva (contado, tarjeta de crédito alternativa, etc.).
 
 El cliente puede cancelar una reserva hasta una semana antes de la fecha inicial, en cuyo caso no se le pasaría al cobro factura alguna. En caso de cancelar la reserva con menos de 7 días de anticipación, se le cobrará de su tarjeta de crédito el valor correspondiente a un día de hospedaje
+
+
+Vamos a hacer un [diseño usando la herramienta de Pony](https://editor.ponyorm.com/user/chun/ReservasHotel2022/designer).
 
 
 ## Instalación
