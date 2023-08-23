@@ -13,7 +13,7 @@ Un repo donde hay un Pony orm galopando por acá o por alla.
 
 ## Generemos un diagrama de clases del ejercicio "Reservas de habitaciones" del práctico 2:
 
-NOTA: no vamos a ver esto en la clase del 2023 pero al final de esta sección está la solución. 
+NOTA: no vamos a ver esto en la clase del 2023 pero al final de esta sección está la solución.
 
 Se desea desarrollar un sistema informático para la gestión de las reservas de las habitaciones de un hotel. Cada reserva estará a nombre de un cliente, que proporcionará un número de tarjeta de crédito para efectuar el pago.
 
@@ -39,8 +39,8 @@ Vamos a hacer un [diseño usando la herramienta de Pony](https://editor.ponyorm.
 5. Instalar los requerimientos
 
 ```
-$ git clone https://github.com/matiaslee/pony_orm_2022.git
-$ cd pony_orm_2022/
+$ git clone https://github.com/matiaslee/pony_orm_202x.git
+$ cd pony_orm_202x/
 $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
