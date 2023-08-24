@@ -64,7 +64,7 @@ Python 3.6.9 (default, Jul 17 2020, 12:50:27)
 [GCC 8.4.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> from entities import Pasajero
->>> p = Pasajero(nombre='Matias Lee')
+>>> p = Pasajero(nombre='Matias Lee', edad=40)
 >>> p
 Person[new:1]
 >>> p.nombre
@@ -121,6 +121,7 @@ No nos muestra data de la tarjeta porque eso es una relación
 Las queryes se construyen usando `generadores`.  Por ejemplo
 
 ```
+>>> from pony.orm import select
 >>> select(p for p in Pasajero if p.edad > 31)
 <pony.orm.core.Query object at 0x7f167c08b130>
 ```
@@ -129,10 +130,11 @@ El resultado es un objeto `Query` que nos dice mucho. Podermos usar el método `
 
 ```
 >>> select(p for p in Pasajero if p.edad > 31).show()
-id|nombre|edad
---+------+----
-3 |Bob   |40
-6 |Bobito|40
+id|nombre    |edad
+--+----------+----
+1 |Matias Lee|40
+3 |Bob       |40
+6 |Bobito    |40
 ```
 
 Podemos ver que query de sql se realiza si activamos el modo debug:
@@ -146,10 +148,11 @@ SELECT "p"."id", "p"."nombre", "p"."edad"
 FROM "Pasajero" "p"
 WHERE "p"."edad" > 31
 
-id|nombre|edad
---+------+----
-3 |Bob   |40
-6 |Bobito|40
+id|nombre    |edad
+--+----------+----
+1 |Matias Lee|40
+3 |Bob       |40
+6 |Bobito    |40
 
 >>> set_sql_debug(False)
 >>>
@@ -325,7 +328,7 @@ La última relacion está en el archivo relations.py. Carguemolo.
 Vamos a crear un profesor y una materia con ese profesor.
 
 ```
->>> from relations import *
+>>> from entities import Profesor, Materia
 >>> matias = Profesor(nombre='Matias')
 >>> matias.materias.select().show()
 id|nombre
@@ -396,7 +399,7 @@ id|nombre|edad
 6 |Bobito|25
 ```
 
-Podemos hacer queries de objetos en función de atributos de low objetos a los que se relaciona. Por ejemplo, podemos seleccionar los tarjetas con dueños mayores a 25 años:
+Podemos hacer queries de objetos en función de atributos de los objetos a los que se relaciona. Por ejemplo, podemos seleccionar los tarjetas con dueños mayores a 25 años:
 
 ```
 >>> select(tarjeta for tarjeta in TarjetaDeCredito if tarjeta.pasajero.edad > 25).show()
