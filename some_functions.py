@@ -11,12 +11,13 @@ from entities import TarjetaDeCredito, Pasajero
 #  - Clears the database session cache
 #
 
+
 @db_session
 def cargar_datos_con_decoradores():
     pasajeros = [
         ('John', 20, 1234),
         ('Mary', 30, 1234555),
-        ('Bob' , 40, 323232),
+        ('Bob', 40, 323232),
     ]
     for nombre, edad, numero in pasajeros:
         pasajero = Pasajero(nombre=nombre, edad=edad)

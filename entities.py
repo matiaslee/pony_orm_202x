@@ -1,7 +1,9 @@
 from datetime import datetime
-from pony.orm import *
+from pony.orm import (Database, PrimaryKey, Required, Set, Optional)
+
 
 db = Database()
+
 
 class Pasajero(db.Entity):
     id = PrimaryKey(int, auto=True)
@@ -41,10 +43,23 @@ class Factura(db.Entity):
     monto = Optional(float)
 
 
+# OTROS EJEMPLOS
 
-#db.generate_mapping()
+class Materia(db.Entity):
+    nombre = Required(str)
+    profesores = Set("Profesor")
+
+
+class Profesor(db.Entity):
+    nombre = Required(str)
+    materias = Set(Materia)
+
+
+# db.generate_mapping()
 # Configuramos la base de datos.
 # Más info: https://docs.ponyorm.org/database.html
 
-db.bind('sqlite', 'example.sqlite', create_db=True)  # Conectamos el objeto `db` con la base de dato.
-db.generate_mapping(create_tables=True)  # Generamos las base de datos.
+# Conectamos el objeto `db` con la base de dato.
+db.bind('sqlite', 'example.sqlite', create_db=True)
+# Generamos las base de datos.
+db.generate_mapping(create_tables=True)
